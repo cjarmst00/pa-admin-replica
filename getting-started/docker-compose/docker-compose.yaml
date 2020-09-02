@@ -22,10 +22,8 @@ services:
       - pingnet
     cap_add:
       - NET_ADMIN
-    volumes:
-      - pingaccess-admin-out:/opt/out
     
-    pingaccess-admin-replica:
+  pingaccess-admin-replica:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingaccess:6.1.0-edge
     environment:
       - SERVER_PROFILE_ADMIN_URL=https://github.com/cjarmst00/pa-admin-replica.git
@@ -46,8 +44,6 @@ services:
       - pingnet
     cap_add:
       - NET_ADMIN
-    volumes:
-      - pingaccess-admin-replica-out:/opt/out
     
   pingaccess:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingaccess:6.1.0-edge
@@ -64,5 +60,6 @@ services:
       - 3000-3010:3000
     networks:
       - pingnet
+
 networks:
     pingnet:
